@@ -8,10 +8,76 @@ import { Icon } from 'astro-icon/components';
 	Este es el inicio
 	<p class="pretty-p font-myfont">Hola <Icon name="mdi:delete" class="text-black" />
 	</p>
+	<div id="btn">
+		Pínchame
+	</div>
+	<div>
+		<ul data-tabs class="flex bg-blue-500">
+			<li><a data-tabby-default href="#harry" >Harry Potter</a></li>
+			<li><a href="#hermione">Hermione</a></li>
+			<li><a href="#neville">Neville</a></li>
+		</ul>
+	</div>
+	
+	<div class="bg-slate-700">
+		<div id="harry">harry aasdasda</div>
+		<div id="hermione">hermione asddddddddda</div>
+		<div id="neville">neville asdadadadada</div>
+	</div>
+	
+
+
+
+
+	<div class="embla ">
+		<div class="embla__container">
+		  <div class="embla__slide bg-red-400">Slide 1</div>
+		  <div class="embla__slide bg-orange-400">Slide 2</div>
+		  <div class="embla__slide bg-green-600">Slide 3</div>
+		</div>
+	</div>
+	  
 </Layout>
 <style>
 	.pretty-p {
 		@apply bg-red-500 p-6 text-white rounded h-52;
 		clip-path: polygon(100% 0%, 0% 0% , 0.00% 56.67%, 3.33% 56.34%, 6.67% 55.39%, 10.00% 53.92%, 13.33% 52.06%, 16.67% 50.00%, 20.00% 47.94%, 23.33% 46.08%, 26.67% 44.61%, 30.00% 43.66%, 33.33% 43.33%, 36.67% 43.66%, 40.00% 44.61%, 43.33% 46.08%, 46.67% 47.94%, 50.00% 50.00%, 53.33% 52.06%, 56.67% 53.92%, 60.00% 55.39%, 63.33% 56.34%, 66.67% 56.67%, 70.00% 56.34%, 73.33% 55.39%, 76.67% 53.92%, 80.00% 52.06%, 83.33% 50.00%, 86.67% 47.94%, 90.00% 46.08%, 93.33% 44.61%, 96.67% 43.66%, 100.00% 43.33%);
 	}
+	.embla {
+		@apply bg-blue-200 max-w-80;
+  		overflow: hidden;
+	}
+	.embla__container {
+  		display: flex;
+	}
+	.embla__slide {
+  		flex: 0 0 100%;
+  		min-width: 0;
+	}
 </style>
+
+<script>
+	import JSConfetti from 'js-confetti';
+	import Tabby from 'tabbyjs';
+	import EmblaCarousel from 'embla-carousel'
+
+	const jsConfetti = new JSConfetti()
+
+	
+
+	const divBtn = document.getElementById("btn")
+	divBtn.addEventListener("click", function(event) {
+		console.log("Me has pinchado", event.target)
+		jsConfetti.addConfetti()
+	})
+
+	console.log(divBtn)
+
+	const tabs = new Tabby('[data-tabs]');
+
+	const emblaNode = document.querySelector('.embla')
+	const options = { loop: false }
+	const emblaApi = EmblaCarousel(emblaNode, options)
+
+
+</script>
